@@ -4,7 +4,7 @@ from mlxtend.frequent_patterns import apriori
 from mlxtend.frequent_patterns import association_rules
 
 
-fp_df = pd.read_csv('Faceplate.csv',index_col=0)
+fp_df = pd.read_csv('/home/dai/33/machine_learning/Datasets/Faceplate.csv',index_col=0)
 fp_df = fp_df.astype(bool)
 
 # create frequent itemsets
@@ -14,3 +14,4 @@ rules = association_rules(itemsets, metric='confidence', min_threshold=0.6)
 rules = rules[['antecedents', 'consequents', 'support', 'confidence', 'lift']]
 rules = rules[rules['lift']>1]
 rules.sort_values(by='lift', ascending=False)
+print(rules)
