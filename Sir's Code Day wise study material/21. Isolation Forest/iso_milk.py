@@ -6,7 +6,7 @@ from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler 
 import seaborn as sns 
 
-df = pd.read_csv("milk.csv", index_col=0)
+df = pd.read_csv("/home/dai/33/machine_learning/Datasets/milk.csv", index_col=0)
 ############################################################################
 
 clf = IsolationForest(contamination=0.05,
@@ -30,7 +30,7 @@ print(np.cumsum(prcomp.explained_variance_ratio_))
 obs = np.where(predictions == -1, "Inlier", "Outlier")
 PCs = pd.DataFrame({'PC1':scores[:,0], 'PC2':scores[:,1],
                     'Class':obs})
-
+print(PCs)
 sns.scatterplot(data=PCs, x='PC1',
                 y='PC2', hue='Class')
 for i in np.arange(0, df.shape[0] ):
